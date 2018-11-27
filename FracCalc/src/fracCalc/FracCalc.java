@@ -11,13 +11,15 @@ public class FracCalc {
     	System.out.println("Enter an equation, or quit the program.");
     	Scanner input = new Scanner(System.in);
     	String consoleInput = input.nextLine();
-    	if (consoleInput == "quit") {
-    		quitStatus = true;
-    	} else {
+    	if (consoleInput != "quit") {
     		System.out.println(produceAnswer(consoleInput));
+    	} else {
+    		quitStatus = true;
     	}
     	
     }
+    
+    System.out.println("Program quit.");
     	
     
     
@@ -37,16 +39,20 @@ public class FracCalc {
         String part1 = null;
         String operand = null;
         String part2 = null;
-        String[] terminal = input.split(" ");
-        part1 = terminal[0];
-        operand = terminal[1];
-        part2 = terminal[2];
+        String[] splitExpression = input.split(" ");
+        part1 = splitExpression[0];
+        operand = splitExpression[1];
+        part2 = splitExpression[2];
+        //make return a string that includes part 2 
         
-        return part2;
+        
+     //return part2;		//was for part 1
     }
     
-
-
+    public static String[] parseOperand(String input) {
+    	String[] parsed = new String[3];
+    	
+    	return parsed;//String[]
     // TODO: Fill in the space below with any helper methods that you think you will need
-    
+    }
 }
