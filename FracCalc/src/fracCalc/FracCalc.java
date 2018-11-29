@@ -21,7 +21,7 @@ public class FracCalc {
     
     System.out.println("Program quit.");
     	
-    
+
     
     }
     
@@ -50,7 +50,9 @@ public class FracCalc {
     }
     
     public static String[] parseOperand(String input) {
-    	String[] parsed = new String[3];
+    	String[] parsed = {null, null, null};
+    	
+    	
     	
     	return parsed;//String[]
     // TODO: Fill in the space below with any helper methods that you think you will need
