@@ -33,7 +33,7 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
+/*    public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
         String part1 = null;
@@ -44,13 +44,35 @@ public class FracCalc {
         operand = splitExpression[1];
         part2 = splitExpression[2];
         //make return a string that includes part 2 
-        
-        
+                
      //return part2;		//was for part 1
-    }
+    }	*/
+ 
+    // TODO: Implement this function to produce the solution to the input
     
+    public static String produceAnswer(String input)
+    { 
+    	//Figure out what's going on in the input
+    		//>Send each  number to parseOperand
+    	//
+    	return "Code incomplete";
+    }
     public static String[] parseOperand(String input) {
     	String[] parsed = {null, null, null};
+    	if (input.contains("_") && input.contains("/")) {
+    		//This is a fraction and a whole number
+    		
+    		//
+    		
+    	} else if (input.contains("/")) {
+    		//This is just a fraction
+    		
+    		
+    	} else {
+    		//This is just a whole number.
+    		
+    		
+    	}
     	
     	
     	
