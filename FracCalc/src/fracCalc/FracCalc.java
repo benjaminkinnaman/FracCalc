@@ -66,6 +66,7 @@ public class FracCalc {
     		
     	} else if (input.contains("/")) {
     		//This is just a fraction
+    		String[] dissect = input.split("/");
     		
     		
     	} else {
