@@ -11,7 +11,7 @@ public class FracCalc {
     	System.out.println("Enter an equation, or quit the program.");
     	Scanner input = new Scanner(System.in);
     	String consoleInput = input.nextLine();
-    	if (consoleInput != "quit") {
+    	if (!consoleInput.equals("quit")) {
     		System.out.println(produceAnswer(consoleInput));
     	} else {
     		quitStatus = true;
@@ -49,7 +49,7 @@ public class FracCalc {
         return ("whole:" + part2return[0] + " numerator:" + part2return[1] + " denominator:" + part2return[2]);
         
         
-     //return part2;		//was for part 1
+    //return part2;		//was for part 1
     }	
  
     // TODO: Implement this function to produce the solution to the input
@@ -72,7 +72,7 @@ public class FracCalc {
     
     
     public static String[] parseOperand(String input) {		//Makes the user input into an array the rest of the program can use
-    	String[] parsed = {null, null, null};
+    	String[] parsed = {"0", "0", "0"};
     	if (input.contains("_") && input.contains("/")) {
     		//This is a fraction and a whole number
     		String[] preParsing = new String[2];
@@ -85,9 +85,11 @@ public class FracCalc {
 
     	} else if (input.contains("/")) {
     		//This is just a fraction
-    		parsed = input.split("/");				//Final assignment
-    			//Returns like this: "[num,num]"
-    		
+    		String[] preParsingFrac = (input.split("/"));	//Seperates fraction
+    		parsed[0] = "0";							//Final assignment
+    		parsed[1] = preParsingFrac[0];				//Final assignment
+    		parsed[2] = preParsingFrac[1];				//Final assignment
+   		
     	} else {
     		//This is just a whole number.			//Throw if "num_" instead of "num" [DONE] 
     		parsed = input.split("_");				//Final assignment
