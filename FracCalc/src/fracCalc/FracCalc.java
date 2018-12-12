@@ -92,8 +92,17 @@ public class FracCalc {
    		
     	} else {
     		//This is just a whole number.			//Throw if "num_" instead of "num" [DONE] 
-    		parsed = input.split("_");				//Final assignment
+    		//parsed = input.split("_");				//Final assignment
     			//Returns like this: "[num]"
+    		
+    		
+    		
+    		String[] preParsing = new String[2];
+    		preParsing = input.split("_");
+    		parsed[0] = preParsing[0];		//Final assignment
+    		parsed[1] = "0";				//Final assignment
+    		parsed[2] = "1";				//Final assignment
+    		
     	}
     	
     	
