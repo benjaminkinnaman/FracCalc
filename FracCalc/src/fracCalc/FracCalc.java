@@ -42,6 +42,7 @@ public class FracCalc {
         String[] part1return = parseOperand(part2);
         String[] part2return = parseOperand(part2);
         //fix mixed numbers
+        
         //check operand
         //execute correct function
         
@@ -86,9 +87,6 @@ public class FracCalc {
     
     	return parsed;	//Returns input, parsed as a String[]
     // TODO: Fill in the space below with any helper methods that you think you will need
-    
-
-    
     
     
     }
