@@ -43,8 +43,8 @@ public class FracCalc {
         String[] part2return = parseOperand(part2);
         //fix mixed numbers
         
-        //check operand
-        //execute correct function
+        //check operand + send request for correct function
+
         
         
      return ("whole:" + part2return[0] + " numerator:" + part2return[1] + " denominator:" + part2return[2]);    //was the return for checkpoint 2
@@ -90,4 +90,44 @@ public class FracCalc {
     
     
     }
+    
+   
+    //METHOD: Cures mixed numbers
+    
+/*    public static String[] checkMixed() {
+    	
+    }	*/
+    
+    //METHOD: Checks operands and sends request for correct function
+    
+    public static String[] findOperand(String[] firstFrac, String operandIn, String[] secondFrac) {
+    	String[] output = new String[3];
+    	
+    	if (operandIn == "+") {
+    		//This is addition
+    		output[0] = firstFrac[0] + secondFrac[0];
+    		//Check common denominators
+    		if (firstFrac[1] == firstFrac[2]) {
+    			output[1] = firstFrac[1] + secondFrac[1];
+    			output[2] = firstFrac[2];
+    		} else {
+    			//How to mix numbers?
+    			
+    		}
+    		
+    	} else if (operandIn == "-") {
+    		
+    	} else if (operandIn == "*") {
+    		//
+    	} else if (operandIn == "/") {
+    		//This is division
+    		
+    	}
+    	
+    	return output;
+    }
+    
+    //METHOD: Fixes common denominator
+    
+    
 }
