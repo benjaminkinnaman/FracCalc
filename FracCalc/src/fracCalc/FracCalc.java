@@ -44,7 +44,7 @@ public class FracCalc {
         //fix mixed numbers
         
         //check operand + send request for correct function
-
+        //findOperand
         
         
      return ("whole:" + part2return[0] + " numerator:" + part2return[1] + " denominator:" + part2return[2]);    //was the return for checkpoint 2
@@ -105,20 +105,55 @@ public class FracCalc {
     	
     	if (operandIn == "+") {
     		//This is addition
-    		output[0] = firstFrac[0] + secondFrac[0];
+    		int whole1 = Integer.parseInt(firstFrac[0]);
+    		int whole2 = Integer.parseInt(secondFrac[0]);
+    		output[0] = Integer.toString(whole1 + whole2);
     		//Check common denominators
-    		if (firstFrac[1] == firstFrac[2]) {
-    			output[1] = firstFrac[1] + secondFrac[1];
+    		if (secondFrac[2] == firstFrac[2]) {
+    			int num1 = Integer.parseInt(firstFrac[1]);
+    			int num2 = Integer.parseInt(secondFrac[2]);
+    			output[1] = Integer.toString(num1 + num2);	
     			output[2] = firstFrac[2];
     		} else {
-    			//How to mix numbers?
-    			
+    			//Mixed number issue
+    			//Set Numerator: Each Numerator is multiplied by the opposite denominator. Use temporary variables.
+    			int num1 = Integer.parseInt(firstFrac[1]) * Integer.parseInt(secondFrac[2]);	//Converts the string to a int temporarily to multiply it.
+    			int num2 = Integer.parseInt(secondFrac[1]) * Integer.parseInt(firstFrac[2]);
+    			output[1] = Integer.toString(num1 + num2);
+    			int den1 = Integer.parseInt(firstFrac[2]);
+    			int den2 = Integer.parseInt(secondFrac[2]);
+    			output[2] = Integer.toString(den1 * den2);
     		}
     		
     	} else if (operandIn == "-") {
-    		
+    		//This is subtraction
+    		int whole1 = Integer.parseInt(firstFrac[0]);
+    		int whole2 = Integer.parseInt(secondFrac[0]);
+    		output[0] = Integer.toString(whole1 - whole2);
+    		//Check common denominators
+    		if (secondFrac[2] == firstFrac[2]) {
+    			int num1 = Integer.parseInt(firstFrac[1]);
+    			int num2 = Integer.parseInt(secondFrac[2]);
+    			output[1] = Integer.toString(num1 - num2);	
+    			output[2] = firstFrac[2];
+    		} else {
+    			//Mixed number issue
+    			//Set Numerator: Each Numerator is multiplied by the opposite denominator. Use temporary variables.
+    			int num1 = Integer.parseInt(firstFrac[1]) * Integer.parseInt(secondFrac[2]);	//Converts the string to a int temporarily to multiply it.
+    			int num2 = Integer.parseInt(secondFrac[1]) * Integer.parseInt(firstFrac[2]);
+    			output[1] = Integer.toString(num1 - num2);
+    			int den1 = Integer.parseInt(firstFrac[2]);
+    			int den2 = Integer.parseInt(secondFrac[2]);
+    			output[2] = Integer.toString(den1 * den2);
+    		}
     	} else if (operandIn == "*") {
-    		//
+    		//This is multiplication
+    		//First check denominator    		
+    		if (firstFrac[2] != secondFrac[2]) {
+    			
+    		}
+    		
+    		
     	} else if (operandIn == "/") {
     		//This is division
     		
