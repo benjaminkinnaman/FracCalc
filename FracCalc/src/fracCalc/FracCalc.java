@@ -151,6 +151,9 @@ public class FracCalc {
     		//First check denominator    		
     		if (firstFrac[2] != secondFrac[2]) {
     			
+    		}	else {	//Denominators are the same
+    			
+    			
     		}
     		
     		
