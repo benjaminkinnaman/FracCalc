@@ -75,8 +75,8 @@ public class FracCalc {
     		//This is just a whole number.
     		String[] preParsing = new String[2];
     		preParsing = input.split("_");
-    		parsed[0] = preParsing[0];		//Final assignment
-    		parsed[1] = "0";				//Final assignment
+    		parsed[0] = Integer.toString(Integer.parseInt(preParsing[0]) - 1);		//Final assignment
+    		parsed[1] = "1";				//Final assignment
     		parsed[2] = "1";				//Final assignment
     		
     	}
@@ -90,18 +90,16 @@ public class FracCalc {
     //METHOD: Checks operands and sends request for correct function
     
     public static String[] findOperand(String[] firstFrac, String operandIn, String[] secondFrac) {
-    	String[] output = new String[3];
+    	String[] output = {"0","0","0"};
     	
-    	if (operandIn == "+") {
-    		//This is addition
-    		int whole1 = Integer.parseInt(firstFrac[0]);
-    		int whole2 = Integer.parseInt(secondFrac[0]);
-    		output[0] = Integer.toString(whole1 + whole2);
+    	if (operandIn.equals("+")) {
+    		//This is addition   		
+    		output[0] = Integer.toString(Integer.parseInt(firstFrac[0]) + Integer.parseInt(secondFrac[0]));
     		//Check common denominators
-    		if (secondFrac[2] == firstFrac[2]) {
+    		if (secondFrac[2].equals(firstFrac[2])) {
     			int num1 = Integer.parseInt(firstFrac[1]);
-    			int num2 = Integer.parseInt(secondFrac[2]);
-    			output[1] = Integer.toString(num1 + num2);	
+    			int num2 = Integer.parseInt(secondFrac[1]);
+    			output[1] = Integer.toString(num1 +num2);
     			output[2] = firstFrac[2];
     		} else {
     			//Mixed number issue
@@ -114,13 +112,13 @@ public class FracCalc {
     			output[2] = Integer.toString(den1 * den2);
     		}
     		
-    	} else if (operandIn == "-") {
+    	} else if (operandIn.equals("-")) {
     		//This is subtraction
     		int whole1 = Integer.parseInt(firstFrac[0]);
     		int whole2 = Integer.parseInt(secondFrac[0]);
     		output[0] = Integer.toString(whole1 - whole2);
     		//Check common denominators
-    		if (secondFrac[2] == firstFrac[2]) {
+    		if (secondFrac[2].equals(firstFrac[2])) {
     			int num1 = Integer.parseInt(firstFrac[1]);
     			int num2 = Integer.parseInt(secondFrac[2]);
     			output[1] = Integer.toString(num1 - num2);	
@@ -135,7 +133,7 @@ public class FracCalc {
     			int den2 = Integer.parseInt(secondFrac[2]);
     			output[2] = Integer.toString(den1 * den2);
     		}
-    	} else if (operandIn == "*") {
+    	} else if (operandIn.equals("*")) {
     		//This is multiplication
     		//No denominator check necessary
     		int numerator1 = (Integer.parseInt(firstFrac[0]) * Integer.parseInt(firstFrac[2])) + Integer.parseInt(firstFrac[1]);
@@ -143,23 +141,22 @@ public class FracCalc {
     		output[2] = Integer.toString(Integer.parseInt(firstFrac[2]) * Integer.parseInt(secondFrac[2]));//both denominators multiplied
     		output[1] = Integer.toString(numerator1 * numerator2);
     		output[0] = Integer.toString(Integer.parseInt(output[1]) / Integer.parseInt(output[2]));//num added dived by denominator no remainder
-    		output[1] = Integer.toString(Integer.parseInt(output[1]) - Integer.parseInt(output[0]));
+    		output[1] = Integer.toString(Integer.parseInt(output[1]) - (Integer.parseInt(output[0]) * Integer.parseInt(output[2])));
     	
-    	} else if (operandIn == "/") {
+    	} else if (operandIn.equals("/")) {
     		//This is division
     		int numerator1 = (Integer.parseInt(firstFrac[0]) * Integer.parseInt(firstFrac[2])) + Integer.parseInt(firstFrac[1]);
     		int numerator2 = (Integer.parseInt(secondFrac[0]) * Integer.parseInt(secondFrac[2])) + Integer.parseInt(secondFrac[1]);
     		output[2] = Integer.toString(Integer.parseInt(firstFrac[2]) * numerator2);//both denominators multiplied
     		output[1] = Integer.toString(numerator1 * Integer.parseInt(secondFrac[2]));
     		output[0] = Integer.toString(Integer.parseInt(output[1]) / Integer.parseInt(output[2]));//num added dived by denominator no remainder
-    		output[1] = Integer.toString(Integer.parseInt(output[1]) - Integer.parseInt(output[0]));
+    		output[1] = Integer.toString(Integer.parseInt(output[1]) - (Integer.parseInt(output[0]) * Integer.parseInt(output[2])));
     	
+    	} else {
+    		output[0] = "Operand isn't reading.";
     	}
     	
     	return output;
-    }
-    
-    //METHOD: Fixes common denominator
-    
+    }    
     
 }
