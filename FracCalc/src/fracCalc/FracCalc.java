@@ -39,16 +39,12 @@ public class FracCalc {
         String part1 = splitExpression[0];
         String operand = splitExpression[1];
         String part2 = splitExpression[2];
-        String[] part1return = parseOperand(part2);
+        String[] part1return = parseOperand(part1);
         String[] part2return = parseOperand(part2);
-        //fix mixed numbers
-        
-        //check operand + send request for correct function
-        //findOperand
-        
-        
-     return ("whole:" + part2return[0] + " numerator:" + part2return[1] + " denominator:" + part2return[2]);    //was the return for checkpoint 2
-     //return part2;		//was the return for checkpoint 1
+        String[] value = findOperand(part1return, operand, part2return);
+        String convertedValue = value[0] + "_" + value[1] + "/" + value[2];
+        return convertedValue;
+  //   return ("whole:" + part2return[0] + " numerator:" + part2return[1] + " denominator:" + part2return[2]);
     }	
     
    
@@ -90,13 +86,6 @@ public class FracCalc {
     
     
     }
-    
-   
-    //METHOD: Cures mixed numbers
-    
-/*    public static String[] checkMixed() {
-    	
-    }	*/
     
     //METHOD: Checks operands and sends request for correct function
     
@@ -148,18 +137,23 @@ public class FracCalc {
     		}
     	} else if (operandIn == "*") {
     		//This is multiplication
-    		//First check denominator    		
-    		if (firstFrac[2] != secondFrac[2]) {
-    			
-    		}	else {	//Denominators are the same
-    			
-    			
-    		}
-    		
-    		
+    		//No denominator check necessary
+    		int numerator1 = (Integer.parseInt(firstFrac[0]) * Integer.parseInt(firstFrac[2])) + Integer.parseInt(firstFrac[1]);
+    		int numerator2 = (Integer.parseInt(secondFrac[0]) * Integer.parseInt(secondFrac[2])) + Integer.parseInt(secondFrac[1]);
+    		output[2] = Integer.toString(Integer.parseInt(firstFrac[2]) * Integer.parseInt(secondFrac[2]));//both denominators multiplied
+    		output[1] = Integer.toString(numerator1 * numerator2);
+    		output[0] = Integer.toString(Integer.parseInt(output[1]) / Integer.parseInt(output[2]));//num added dived by denominator no remainder
+    		output[1] = Integer.toString(Integer.parseInt(output[1]) - Integer.parseInt(output[0]));
+    	
     	} else if (operandIn == "/") {
     		//This is division
-    		
+    		int numerator1 = (Integer.parseInt(firstFrac[0]) * Integer.parseInt(firstFrac[2])) + Integer.parseInt(firstFrac[1]);
+    		int numerator2 = (Integer.parseInt(secondFrac[0]) * Integer.parseInt(secondFrac[2])) + Integer.parseInt(secondFrac[1]);
+    		output[2] = Integer.toString(Integer.parseInt(firstFrac[2]) * numerator2);//both denominators multiplied
+    		output[1] = Integer.toString(numerator1 * Integer.parseInt(secondFrac[2]));
+    		output[0] = Integer.toString(Integer.parseInt(output[1]) / Integer.parseInt(output[2]));//num added dived by denominator no remainder
+    		output[1] = Integer.toString(Integer.parseInt(output[1]) - Integer.parseInt(output[0]));
+    	
     	}
     	
     	return output;
